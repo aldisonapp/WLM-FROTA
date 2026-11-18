@@ -1,0 +1,1030 @@
+/* ==========================================================================
+   WLM | Controle de Óleo — Folha de Estilos Oficial Responsiva
+   Identidade Visual: Verde Scania/WLM e Preto
+   Compatibilidade: Desktop, Tablet Android (Oficina) e Mobile
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+  --bg: #080d0b;
+  --panel: #111a16;
+  --panel2: #18241d;
+  --line: #2a4032;
+  --green: #12e34e;
+  --green-glow: rgba(18, 227, 78, 0.25);
+  --text: #eef8f0;
+  --muted: #a3b7a8;
+  --warn: #ffc247;
+  --warn-bg: #2b2414;
+  --red: #ff6464;
+  --red-border: #763c3c;
+  --touch-target: 48px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+/* ==========================================================================
+   Reset e Configurações Globais
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Compensação para rolagem suave com cabeçalho fixo */
+#home,
+#release,
+#activeBox,
+#history,
+#pumps {
+  scroll-margin-top: 110px;
+}
+
+/* ==========================================================================
+   Estrutura da Aplicação (.app)
+   ========================================================================== */
+.app {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Barra Lateral (Desktop) / Barra Superior (Mobile & Tablet)
+   ========================================================================== */
+.side {
+  width: 250px;
+  flex-shrink: 0;
+  background: #0c140f;
+  border-right: 1px solid var(--line);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 2px 18px;
+  min-width: 0;
+}
+
+.wlmlogo {
+  width: auto;
+  max-width: 140px;
+  max-height: 48px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+.brandtitle {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brandtitle strong {
+  font-size: 14.5px;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+  display: block;
+  white-space: nowrap;
+}
+
+.brandtitle small {
+  font-size: 8px;
+  line-height: 1.3;
+  margin-top: 4px;
+  display: block;
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+
+.mark {
+  display: none;
+}
+
+/* Navegação */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #c9d8cc;
+  text-align: left;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.nav button:hover {
+  background: rgba(18, 227, 78, 0.15);
+  color: #ffffff;
+}
+
+.nav button.active {
+  background: var(--green);
+  color: #07150a;
+  font-weight: 800;
+}
+
+.nav button:active {
+  transform: scale(0.98);
+}
+
+.sidefoot {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: auto;
+  padding: 24px 4px 4px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Conteúdo Principal (.main)
+   ========================================================================== */
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  max-width: 1600px;
+  padding: 24px 28px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.top h1 {
+  font-size: 26px;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.top p {
+  color: var(--muted);
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+.pill {
+  border: 1px solid var(--line);
+  background: var(--panel2);
+  padding: 8px 14px;
+  border-radius: 40px;
+  color: var(--muted);
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.pill b {
+  color: var(--warn);
+}
+
+.notice {
+  background: #2a220f;
+  border: 1px solid #71561b;
+  color: #fbd788;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Cartões de Indicadores (.stats)
+   ========================================================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.stat,
+.panel {
+  background: linear-gradient(140deg, var(--panel), #0d1410);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-sizing: border-box;
+}
+
+.stat {
+  padding: 18px 20px;
+}
+
+.stat small {
+  color: var(--muted);
+  font-size: 12.5px;
+  display: block;
+  font-weight: 500;
+}
+
+.stat strong {
+  display: block;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 800;
+  margin-top: 8px;
+  letter-spacing: -0.5px;
+}
+
+/* ==========================================================================
+   Layout Principal (.layout)
+   ========================================================================== */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+
+.panel {
+  padding: 22px;
+  min-width: 0;
+  width: 100%;
+}
+
+.panel h2 {
+  font-size: 19px;
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.2px;
+}
+
+/* ==========================================================================
+   Formulários & Entradas Touch-friendly
+   ========================================================================== */
+.formgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  color: #c7d9cb;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+input,
+select {
+  background: #1a251e;
+  color: #ffffff;
+  border: 1px solid #3a4b3e;
+  border-radius: 10px;
+  padding: 12px 14px;
+  width: 100%;
+  min-height: var(--touch-target);
+  font-size: 16px;
+  /* Evita zoom automático no mobile */
+  outline: none;
+  min-width: 0;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-glow);
+}
+
+input[type="checkbox"] {
+  width: 16px !important;
+  min-height: 16px !important;
+  height: 16px !important;
+  accent-color: var(--green);
+  cursor: pointer;
+  margin: 0;
+}
+
+.checkbox-row {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-row label {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 400;
+  user-select: none;
+}
+
+input[readonly] {
+  background: #131c16;
+  color: #92a898;
+  cursor: default;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+/* Botões */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 20px;
+  min-height: var(--touch-target);
+  background: #202c24;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  touch-action: manipulation;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background: #2c3c31;
+  border-color: #3e5b47;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn.primary {
+  background: var(--green);
+  color: #061209;
+  border-color: var(--green);
+}
+
+.btn.primary:hover {
+  background: #1bf058;
+}
+
+.btn.danger {
+  border-color: var(--red-border);
+  background: #2a1818;
+  color: #ffb5b5;
+}
+
+.btn.danger:hover {
+  background: #3d2020;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin: 14px 0 0;
+}
+
+/* Caixa de Liberações em Andamento (Simultâneas) */
+.activebox {
+  border: 1px solid #b0872b;
+  background: #1b160d;
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-top: 18px;
+  box-sizing: border-box;
+}
+
+.activebox-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(176, 135, 43, 0.3);
+}
+
+.activebox-head strong {
+  color: #ffd06b;
+  font-size: 15.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activebox-sub {
+  color: #c9b486;
+  font-size: 12px;
+}
+
+.activetabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+
+.activetab {
+  border: 1px solid rgba(176, 135, 43, 0.45);
+  background: #252013;
+  color: #f0ddaf;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.activetab:hover {
+  border-color: #ffd06b;
+  background: #332a17;
+  color: #ffffff;
+}
+
+.activetab.selected {
+  border-color: #ffd06b;
+  background: #3d3118;
+  color: #ffd06b;
+  box-shadow: 0 0 0 2px rgba(255, 208, 107, 0.3);
+}
+
+.activetab .tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffc247;
+  display: inline-block;
+}
+
+.active-detail {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(176, 135, 43, 0.25);
+}
+
+.activebox p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #f0ddaf;
+  margin: 0 0 14px;
+  word-break: break-word;
+}
+
+.activebox p b {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Painel de Conferência & Resultados
+   ========================================================================== */
+.result {
+  background: #071b0e;
+  border: 1px solid #1c7b39;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.result small {
+  color: var(--muted);
+  font-size: 13px;
+  display: block;
+}
+
+.result .number {
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 850;
+  letter-spacing: -1px;
+  color: var(--green);
+  margin: 4px 0 10px;
+  word-break: break-word;
+}
+
+.resultline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.resultline strong {
+  display: block;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.status {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.ok {
+  background: #123d20;
+  color: #58ff8d;
+}
+
+.under {
+  background: #4a3513;
+  color: #ffcb64;
+}
+
+.over {
+  background: #4e1b1b;
+  color: #ff9e9e;
+}
+
+/* ==========================================================================
+   Grade de Bombas (9 Bombas)
+   ========================================================================== */
+.pumps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.pump {
+  border: 1px solid #2d8b48;
+  border-radius: var(--radius-md);
+  padding: 12px 6px;
+  text-align: center;
+  background: #102019;
+  cursor: pointer;
+  user-select: none;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  transition: transform 0.1s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.pump:hover {
+  border-color: var(--green);
+  background: #142920;
+}
+
+.pump:active {
+  transform: scale(0.95);
+}
+
+.pump.busy {
+  border-color: #ba8c29;
+  background: var(--warn-bg);
+}
+
+.pump.busy:hover {
+  border-color: #ffd06b;
+  background: #352c17;
+}
+
+.pump.busy strong {
+  color: #ffd06b;
+}
+
+.pump-os-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffd06b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+  max-width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+.pump strong {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.pump small {
+  font-size: 11px;
+  font-weight: 700;
+  color: #66ef90;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pump.busy small {
+  color: #ffd36d;
+}
+
+/* ==========================================================================
+   Tabela de Histórico
+   ========================================================================== */
+.history {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.historybar {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.historybar h2 {
+  margin: 0;
+}
+
+.historybar input {
+  max-width: 360px;
+}
+
+.scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  min-width: 720px;
+  /* Garante que a tabela não esmague no mobile */
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 13.5px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  color: #c3d3c6;
+  background: #1b261f;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody tr:hover {
+  background: rgba(18, 227, 78, 0.04);
+}
+
+td {
+  color: #e4ede5;
+}
+
+.empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.foot {
+  color: var(--muted);
+  font-size: 12.5px;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Breakpoints Modernos e Testados)
+   ========================================================================== */
+
+/* Telas Médias / Tablets em Paisagem (<= 1024px) */
+@media (max-width: 1024px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .side {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 16px 8px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    background: rgba(12, 20, 15, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    gap: 8px;
+  }
+
+  .brand {
+    padding: 0;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .wlmlogo {
+    max-width: 75px;
+    max-height: 38px;
+  }
+
+  .brandtitle strong {
+    font-size: 14px;
+  }
+
+  .brandtitle small {
+    font-size: 7.5px;
+  }
+
+  .sidefoot {
+    display: none;
+  }
+
+  /* Menu de Navegação em grade sem rolagem lateral */
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    min-width: 0;
+    gap: 8px;
+    padding: 2px 0;
+    overflow: visible;
+  }
+
+  .nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 10px 6px;
+    font-size: 13.5px;
+    font-weight: 700;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  .nav button.active {
+    background: var(--green);
+    color: #07150a;
+    font-weight: 800;
+    border-color: var(--green);
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+/* Tablets em Retrato & Smartphones (<= 768px) */
+@media (max-width: 768px) {
+  .main {
+    padding: 14px;
+  }
+
+  .top h1 {
+    font-size: 22px;
+  }
+
+  .top p {
+    font-size: 13px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .historybar input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .actions .btn {
+    flex: 1 1 auto;
+    min-width: 140px;
+  }
+}
+
+/* Smartphones Pequenos (<= 560px) */
+@media (max-width: 560px) {
+
+  #home,
+  #release,
+  #history,
+  #pumps {
+    scroll-margin-top: 140px;
+  }
+
+  .side {
+    padding: 10px 12px 8px;
+    gap: 10px;
+  }
+
+  .nav {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+
+  .nav button {
+    padding: 9px 8px;
+    font-size: 13px;
+    min-height: 42px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    border-radius: var(--radius-sm);
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .stat {
+    padding: 12px 14px;
+  }
+
+  .stat strong {
+    font-size: 20px;
+  }
+
+  .formgrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .actions .btn {
+    width: 100%;
+  }
+
+  .result {
+    padding: 16px 14px;
+  }
+
+  .result .number {
+    font-size: 28px;
+  }
+
+  .pumps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .pump {
+    padding: 10px 4px;
+    min-height: 62px;
+  }
+
+  .pump strong {
+    font-size: 15px;
+  }
+
+  .pump small {
+    font-size: 10px;
+  }
+
+  .historybar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .historybar input {
+    width: 100%;
+  }
+}
